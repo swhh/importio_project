@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Import.io Project</title>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css"/>
+   <style>
+       .contentTwo {
+         margin-top:30px;
+         background-color:white;
+         padding:0;
+         border-radius:10px;
+       }
+       
+       body {
+         margin:0;
+         background-image:url("https://unsplash.imgix.net/photo-1415356838286-df6fd593e8b3?q=75&fm=jpg&s=12266b84058b7e5acc8f8b83c432d7b8");
+         background-position:center;
+         background-repeat:no-repeat;
+       }
+       
+       .center {
+          text-align:center;
+       }
+       
+        .white {
+          color:white;
+       }
+       
+       .contentOne {
+          margin-top:30px;
+       }
+       
+       table {
+         border-radius:5px;
+         overflow:hidden;
+       }
+       
+
+  </style>
+  <script src="angular.js"></script>
+  <script src="angular-resource.js"></script>
+  <script src="app.js"></script>
+
+</head>
+<body>
+<div class="container" ng-app="importApp" ng-controller="appCtrl">
+    <div class="row">
+     <div class="contentOne center white col-md-6 col-md-offset-3">
+              <h1>Find your dream flat</h1>
+              <p class="lead">
+                 Here you'll find your dream flat. Just enter the city you want to find out about and we'll show you the best flats in your area.
+              </p>
+              <form method="get">
+                  <div class="form-group">
+                      <input ng-model="city" type="text" class="form-control" placeholder="Type your city" />
+                  </div>
+                   <div class="form-group">
+                      <input ng-click="testCtrl(city)" type="submit" class="btn btn-success btn-lg" value="Find flats" />
+                  </div>
+              </form>
+         </div>
+    </div>
+    <div class="row">
+         <div class="contentTwo col-md-6 col-md-offset-3">
+              <table class="table table-striped">
+                 <tr><th>Location</th><th>Price</th><th>Link</th></tr>
+                 <tr ng-repeat="flat in flats"><td>{{flat.location}}</td><td>{{flat.price | currency:"€"}}</td><td>{{flat.link}}</td></tr>
+                 
+              </table>
+         </div>
+    </div>
+</div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+  
+
+</body>
+</html>
