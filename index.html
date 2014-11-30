@@ -17,6 +17,7 @@
          background-image:url("https://unsplash.imgix.net/photo-1415356838286-df6fd593e8b3?q=75&fm=jpg&s=12266b84058b7e5acc8f8b83c432d7b8");
          background-position:center;
          background-repeat:no-repeat;
+         padding:70px;
        }
        
        .center {
@@ -40,6 +41,25 @@
           text-decoration:none;
        }
        
+       .navbar-custom {
+         background-color:transparent;
+         border-bottom:white solid 3px;
+       }
+       
+         .navbar-custom .navbar-nav >li>a {
+            color:white;
+       }
+       
+         .navbar-custom .navbar-nav >li>a:hover {
+            color:#5cb85c;
+       }
+       
+       .navbar-custom .navbar-brand {
+         color:white;;
+       }
+       
+
+       
 
   </style>
   <script src="angular.js"></script>
@@ -48,6 +68,28 @@
 
 </head>
 <body ng-app="importApp" ng-controller="appCtrl" resize>
+
+ <div class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="">Import.ioProject</a>
+               
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+            </div>          
+            <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                   <li><a href="#topContainer">Home</a></li>
+                   <li><a href="#midContainer">About</a></li>
+                   <li><a href="#bottomContainer">Contact</a></li>
+               </ul>
+            </div>
+            
+        </div>
+    </div>
 <div class="container" >
     <div class="row">
      <div class="contentOne center white col-md-6 col-md-offset-3">
@@ -72,6 +114,12 @@
                  <tr ng-repeat="flat in flats| orderBy:sort"><td>{{flat.location}}</td><td>{{flat.price |currency:"€" :0}}</td><td><a href="{{flat.link}}">View Details</a></td></tr>
                  
               </table>
+              
+              <nav class="center">
+                <ul class="pagination">
+                   <li><a href="#" ng-click="getMoreResults(city,page)">More Results (page {{page+1}})</a></li>
+               </ul>
+            </nav>
          </div>
     </div>
 </div>
